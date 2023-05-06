@@ -18,12 +18,18 @@ function playRound(playerC, compC){
 
 function game(wins = 5){
     alert(`Welcome to the Rock Paper Scissors game! This game is to ${wins} wins`);
-    
     let compW = 0, playerW = 0;
     
     while(compW < wins && playerW < wins) {
-        let playerSelection = prompt('Enter a choice');
-        playerSelection = playerSelection.toLowerCase();
+        let playerSelection = '';
+        let check = true;
+        while(check){
+            playerSelection = prompt('Enter a choice');
+            playerSelection = playerSelection.toLowerCase();
+            if(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
+                alert("Wrong selection, try again");
+            } else check = false;
+        }
         let computerSelection = getComputerChoice();
 
         let result = playRound(playerSelection, computerSelection);
@@ -41,4 +47,6 @@ function game(wins = 5){
     else alert("Player wins! Well done :D");
 }
 
-game(3);
+let wins = Number(prompt("Select the amount of wins"));
+if (wins == undefined || wins == '') game()
+else game(wins);
