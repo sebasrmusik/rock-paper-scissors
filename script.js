@@ -17,7 +17,7 @@ function playRound(playerC, compC){
 }
 
 function game(wins = 5){
-    alert(`Welcome to the Rock Paper Scissors game! This game is to ${rounds} wins`);
+    alert(`Welcome to the Rock Paper Scissors game! This game is to ${wins} wins`);
     
     let compW = 0, playerW = 0;
     
