@@ -1,0 +1,23 @@
+* {
+    font-family: Roboto;
+}
+
+h1, #result {
+    text-align: center;
+}
+
+#result {
+    font-size: 20px;
+}
+
+.buttons {
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    font-size: 20px;
+    padding: 20px;
+    flex: 0 1 200px;
+}

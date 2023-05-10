@@ -16,7 +16,40 @@ function playRound(playerC, compC){
     if(playerC == compC) return 0;
 }
 
-function game(wins = 5){
+const options = document.querySelectorAll('button');
+const gameText = document.querySelector('div');
+
+let compW = 0, playerW = 0;
+
+for(let option of options){
+    option.addEventListener('click', () => {
+        game(option.id, getComputerChoice());
+    })
+}
+
+function game(playerChoice, computerChoice){
+    let result = playRound(playerChoice, computerChoice);
+    if(result == 1){
+        compW++;
+        gameText.innerText = `You lose this round! Computer: ${compW} Player: ${playerW}`;
+    } else if(result == 2){
+        playerW++;
+        gameText.innerText = `You win this round! Computer: ${compW} Player: ${playerW}`;
+    } else {
+        gameText.innerText = `It's a tie! Computer: ${compW} Player: ${playerW}`;
+    }
+    if(compW == 5){
+        gameText.innerText = 'You lose the game! Press an option to play again';
+        compW = 0;
+        playerW = 0;
+    } else if(playerW == 5){
+        gameText.innerText = 'You win the game! Press an option to play again';
+        compW = 0;
+        playerW = 0;
+    }
+}
+
+/*function game(wins = 5){
     alert(`Welcome to the Rock Paper Scissors game! This game is to ${wins} wins`);
     let compW = 0, playerW = 0;
     
@@ -45,8 +78,8 @@ function game(wins = 5){
     }
     if(compW > playerW) alert("Computer wins! Better luck next time, pal :/");
     else alert("Player wins! Well done :D");
-}
+}*/
 
-let wins = Number(prompt("Select the amount of wins"));
-if (wins == undefined || wins == '') game()
-else game(wins);
+//let wins = Number(prompt("Select the amount of wins"));
+//if (wins == undefined || wins == '') game()
+//else game(wins);
